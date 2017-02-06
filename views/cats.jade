@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  a(href="/") Time to vote !
+  hr
+  div
+    each cat, i in cats
+      table(style='width: 200px; display: inline; text-align: center;')
+        tr
+          td
+            p Score : #{cat.score}
+        tr
+          td
+            p Won : #{cat.wins}
+        tr
+          td
+            p Lost : #{cat.losses}
+        tr
+          td
+            img(src= cat.fileURL, style='width: 200px; height: auto;')
+    else
+      p Sorry no cats at the moment !

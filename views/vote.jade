@@ -1,0 +1,27 @@
+table(style='width: 100%; text-align: center;')
+  if (candidateOne && candidateTwo)
+    tr
+      td(style='width: 50%;')
+        p Score : #{candidateOne.score}
+      td(style='width: 50%;')
+        p Score : #{candidateTwo.score}
+    tr
+      td(style='width: 50%;')
+        p Won : #{candidateOne.wins} - Lost : #{candidateOne.losses}
+      td(style='width: 50%; text-align: center;')
+        p Won : #{candidateTwo.wins} - Lost : #{candidateTwo.losses}
+    tr
+      td(style='width: 50%;')
+        - var expectedWin = round(expected(candidateTwo.score, candidateOne.score), 4)
+        p Expectation of winning : #{expectedWin}
+      td(style='width: 50%;')
+        - var expectedWin = round(expected(candidateOne.score, candidateTwo.score), 4)
+        p Expectation of winning : #{expectedWin}
+    tr
+      td(valign='top', style='width: 50%;')
+        img(src= candidateOne.fileURL, style='min-width: 200px; max-width: 500px; width: 100%; height: auto;', onclick='vote(#{candidateOne.id}, #{candidateTwo.id})', title='Vote for me !')
+      td(valign='top', style='width: 50%;')
+        img(src= candidateTwo.fileURL, style='min-width: 200px; max-width: 500px; width: 100%; height: auto;', onclick='vote(#{candidateTwo.id}, #{candidateOne.id})', title='Vote for me !')
+  else
+    tr
+      td Sorry not enough cats at the moment for a vote !
